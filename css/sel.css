@@ -1,0 +1,19 @@
+p{
+    color: red;
+}
+#demo{
+    color: green;
+}
+.note{
+
+}
+li[value="4"]
+{
+    color: blue;
+}
+ol {
+    margin-left: -40px;
+    margin-top: -20px;
+    list-style-position: inside;
+}
+
