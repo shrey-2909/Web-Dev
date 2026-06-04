@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Netflix Subscription System</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h1>NETFLIX SUBSCRIPTION MANAGEMENT</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="form-box">
+            <h2>Add Subscription Plan</h2>
+
+            <form action="/add" method="POST">
+
+                <input type="text" name="plan_name"
+                placeholder="Plan Name" required>
+
+                <input type="number" name="monthly_price"
+                placeholder="Monthly Price" required>
+
+                <select name="video_quality">
+                    <option>SD</option>
+                    <option>HD</option>
+                    <option>4K</option>
+                </select>
+
+                <input type="number" name="screens_allowed"
+                placeholder="Screens Allowed" required>
+
+                <select name="subscription_status">
+                    <option>Active</option>
+                    <option>Expired</option>
+                </select>
+
+                <button type="submit">Add Plan</button>
+
+            </form>
+        </div>
+
+        <div class="plans">
+
+            <% plans.forEach(plan => { %>
+
+                <div class="card">
+
+                    <h2><%= plan.plan_name %></h2>
+
+                    <p>₹ <%= plan.monthly_price %> / month</p>
+
+                    <p>Quality : <%= plan.video_quality %></p>
+
+                    <p>Screens : <%= plan.screens_allowed %></p>
+
+                    <span class="<%= plan.subscription_status %>">
+                        <%= plan.subscription_status %>
+                    </span>
+
+                </div>
+
+            <% }) %>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
