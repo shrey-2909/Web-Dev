@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM getElementsByTagName() Method</title>
+</head>
+
+<body style="text-align:center">
+
+<h1 style="color:green;">
+KLE TECH
+</h1>
+
+<h2>
+Computer Science
+</h2>
+
+<p>School of Computer Science</p>
+
+<button onclick="g1()">Try it</button>
+
+<script>
+
+function g1()
+{
+    var dh = document.getElementsByTagName("h1");
+    dh[0].style.background = "red";
+    dh[0].style.color = "white";
+
+    var dh1 = document.getElementsByTagName("h2");
+    dh1[0].style.background = "green";
+    dh1[0].style.color = "white";
+}
+
+</script>
+
+</body>
+</html> n    

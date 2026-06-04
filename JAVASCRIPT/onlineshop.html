@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Clothing Store</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            width: 450px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 8px;
+            margin: 8px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .product {
+            border: 1px solid gray;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Online Clothing Store</h1>
+
+<!-- 🔹 LOGIN PAGE -->
+<div class="container" id="loginPage">
+    <h2>Login</h2>
+
+    <input type="text" id="username" placeholder="Enter Username">
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <p id="error" style="color:red;"></p>
+
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- 🔹 CATALOG PAGE -->
+<div class="container hidden" id="catalogPage">
+    <h2>Catalog</h2>
+
+    <select id="category" onchange="filterProducts()">
+        <option value="all">All</option>
+        <option value="men">Men</option>
+        <option value="women">Women</option>
+        <option value="kids">Kids</option>
+    </select>
+
+    <select id="priceFilter" onchange="filterProducts()">
+        <option value="all">All Prices</option>
+        <option value="low">Below 500</option>
+        <option value="high">Above 500</option>
+    </select>
+
+    <div id="products"></div>
+
+    <button onclick="goToCart()">Go to Cart</button>
+</div>
+
+<!-- 🔹 CART PAGE -->
+<div class="container hidden" id="cartPage">
+    <h2>Cart</h2>
+
+    <div id="cartItems"></div>
+    <h3 id="total"></h3>
+
+    <button onclick="goToCatalog()">Back to Catalog</button>
+</div>
+
+<script>
+
+    let cart = [];
+
+    let items = [
+        {name:"T-Shirt", category:"men", price:400},
+        {name:"Jeans", category:"men", price:800},
+        {name:"Dress", category:"women", price:700},
+        {name:"Top", category:"women", price:300},
+        {name:"Kids Shirt", category:"kids", price:250},
+        {name:"Kids Pants", category:"kids", price:600}
+    ];
+
+    // 🔹 LOGIN
+    function login() {
+        let user = document.getElementById("username").value;
+        let pass = document.getElementById("password").value;
+
+        if(user === "" || pass === "") {
+            document.getElementById("error").innerHTML = "Enter all fields";
+            return;
+        }
+
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("catalogPage").classList.remove("hidden");
+
+        displayProducts(items);
+    }
+
+    // 🔹 DISPLAY PRODUCTS
+    function displayProducts(list) {
+        let output = "";
+
+        list.forEach((item, index) => {
+            output += `
+                <div class="product">
+                    <h4>${item.name}</h4>
+                    <p>Category: ${item.category}</p>
+                    <p>Price: ₹${item.price}</p>
+                    <button onclick="addToCart(${index})">Add to Cart</button>
+                </div>
+            `;
+        });
+
+        document.getElementById("products").innerHTML = output;
+    }
+
+    // 🔹 FILTER PRODUCTS
+    function filterProducts() {
+        let cat = document.getElementById("category").value;
+        let price = document.getElementById("priceFilter").value;
+
+        let filtered = items.filter(item => {
+            let c = (cat === "all" || item.category === cat);
+            let p = (price === "all" ||
+                (price === "low" && item.price < 500) ||
+                (price === "high" && item.price >= 500));
+
+            return c && p;
+        });
+
+        displayProducts(filtered);
+    }
+
+    // 🔹 ADD TO CART
+    function addToCart(index) {
+        cart.push(items[index]);
+        alert("Item added to cart");
+    }
+
+    // 🔹 GO TO CART PAGE
+    function goToCart() {
+        document.getElementById("catalogPage").classList.add("hidden");
+        document.getElementById("cartPage").classList.remove("hidden");
+
+        displayCart();
+    }
+
+    // 🔹 DISPLAY CART
+    function displayCart() {
+        let output = "";
+        let total = 0;
+
+        cart.forEach(item => {
+            output += `<p>${item.name} - ₹${item.price}</p>`;
+            total += item.price;
+        });
+
+        document.getElementById("cartItems").innerHTML = output;
+        document.getElementById("total").innerHTML = "Total: ₹" + total;
+    }
+
+    // 🔹 BACK TO CATALOG
+    function goToCatalog() {
+        document.getElementById("cartPage").classList.add("hidden");
+        document.getElementById("catalogPage").classList.remove("hidden");
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doctor Appointment Boking</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: skyblue;
+                text-align: center;
+            }
+            .container{
+                width: 350px;
+                margin: auto;
+                background: pink;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px gray;
+            }
+            input,select{
+                width: 90%;
+                padding: 8px;
+                margin: 10px;
+            }
+            button {
+                padding: 10px 20px;
+                background-color: rgb(243, 215, 240);
+                color: rgb(20, 4, 4);
+                border: none;
+                cursor: pointer; 
+            }
+            button:disabled{
+                background-color: darkgray;
+                cursor: not-allowed;
+            }
+
+        </style>
+    </head>
+    <body>
+       <div class="container" id="loginsection">
+        <h2>Login</h2>
+        <select id="role">
+            <option value="Patient">Patient</option>
+            <option value="Doctor">Doctor</option>
+             </select>
+            <input type="text" id="username" placeholder="Enter username">
+            <input type="password" id="password" placeholder="Enter password">
+            
+            <button onclick="login()">Login</button>
+       </div>
+       <div class="container hidden" id="appointmentsection">
+        <h2>Book appointment</h2>
+        <label>Select Doctor</label>
+         <select id="Doctor">
+            <option>Dr.Arsh</option>
+            <option>Dr.Kashvi</option>
+         </select>
+         <label>
+            Select time slot:
+         </label>
+         <select id="time" >
+            <option>10:00 AM<option>
+            <option>11:00 AM</option>
+            <option>2:00 AM</option>
+         </select>
+         <button onclick="bookAppointment()">BOOK</button>
+         <P id="confirmation" style="color: green;"
+       </div>
+       <script>
+        function login(){
+            let user = document.getElementById("username").value;
+            let pass = document.getElementById("password").value;
+            let role = document.getElementById("role").value;
+            if (user == " " || pass == " ")
+            alert("Please enter details");
+            return;
+            alert(role + "login successful");
+            document.getElementById("loginSection").classList.add("hidden");
+            
+            function bookAppointment(){
+                let Doctor = document.getElementById("Doctor").value;
+                let time = document.getElementById("time").value;
+                 document.getElementById("confirmation").innerHTML =
+                "Appointment booked with " + doctor + " at " + time;
+            }
+        }
+       </script>
+    </body>
+</html>

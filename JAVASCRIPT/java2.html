@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Type Example</title>
+</head>
+
+<body>
+
+<h2>JavaScript Number Methods</h2>
+
+<p id="result"></p>
+
+<script>
+
+// Number() – converts other data types to number
+let num1 = Number("125");
+let num2 = Number("45");
+
+document.write("Number conversion:<br>");
+document.write(num1 + "<br>");
+document.write(num2 + "<br><br>");
+
+
+// parseInt() – converts string to integer
+let intNum = parseInt("12.77");
+
+document.write("parseInt example:<br>");
+document.write(intNum + "<br><br>");
+
+
+// parseFloat() – converts string to decimal number
+let floatNum = parseFloat("12.77");
+
+document.write("parseFloat example:<br>");
+document.write(floatNum + "<br><br>");
+
+
+// toFixed() – rounds number to specified decimal places
+let decimal = 3.14159;
+
+document.write("toFixed example:<br>");
+document.write(decimal.toFixed(2));  // Output: 3.14
+
+</script>
+
+</body>
+</html>

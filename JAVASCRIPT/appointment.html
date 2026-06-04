@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Appointment System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f0ff;
+            text-align: center;
+        }
+
+        h1 {
+            color: #003366;
+        }
+
+        .container {
+            width: 420px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input, select, textarea {
+            width: 95%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Doctor Appointment Booking System</h1>
+
+    <!-- 🔹 APPOINTMENT SECTION (VISIBLE) -->
+    <div class="container">
+        <h2>Book Appointment</h2>
+
+        <label>Patient Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
+
+        <label>Select Doctor:</label>
+        <select id="doctor">
+            <option>Dr. Smith (General)</option>
+            <option>Dr. Priya (Dentist)</option>
+        </select>
+
+        <label>Select Time Slot:</label>
+        <select id="time">
+            <option>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>2:00 PM</option>
+        </select>
+
+        <button onclick="bookAppointment()">Book Appointment</button>
+
+        <p id="confirmation" class="message success"></p>
+    </div>
+
+    <!-- 🔹 FEEDBACK SECTION -->
+    <div class="container">
+        <h2>Feedback Form</h2>
+
+        <label>Service Quality:</label>
+        <select id="service">
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Average</option>
+        </select>
+
+        <label>Waiting Time:</label>
+        <select id="waiting">
+            <option>Short</option>
+            <option>Medium</option>
+            <option>Long</option>
+        </select>
+
+        <label>Treatment Experience:</label>
+        <textarea id="experience" rows="3"></textarea>
+
+        <button onclick="submitFeedback()">Submit Feedback</button>
+
+        <p id="feedbackMsg" class="message success"></p>
+    </div>
+
+    <script>
+        function bookAppointment() {
+            let name = document.getElementById("name").value;
+            let doctor = document.getElementById("doctor").value;
+            let time = document.getElementById("time").value;
+
+            if(name === "") {
+                alert("Please enter your name");
+                return;
+            }
+
+            document.getElementById("confirmation").innerHTML =
+                "Appointment booked for " + name + " with " + doctor + " at " + time;
+        }
+
+        function submitFeedback() {
+            document.getElementById("feedbackMsg").innerHTML =
+                "Thank you for your feedback!";
+        }
+    </script>
+
+</body>
+</html>

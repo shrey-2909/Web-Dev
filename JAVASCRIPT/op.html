@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Arithmetic Operations</title>
+</head>
+<body style="text-align: center;">
+    <script type="text/javascript">
+            function sum(){
+                var x=document.op.num1.value;
+                var y=document.op.num2.value;
+                var s1=parseInt(x) + parseInt(y)
+               document.op.result.value=  s1;       }
+                  function sub(){
+                var x=document.op.num1.value;
+                var y=document.op.num2.value;
+                var s1=parseInt(x) - parseInt(y)
+               document.op.result.value=  s1;   
+                }
+                   function multiply(){
+                var x=document.op.num1.value;
+                var y=document.op.num2.value;
+                var s1=parseInt(x) * parseInt(y)
+               document.op.result.value=  s1;       }
+                  function divide(){
+                var x=document.op.num1.value;
+                var y=document.op.num2.value;
+                var s1=parseInt(x) / parseInt(y)
+               document.op.result.value=  s1;       }
+        </script>
+    <h1>Arithmetic Operations</h1>
+    <hr style="color: red;">
+    <h3 style="text-decoration: underline;">Enter a number in each text box</h3>
+    <form name="op">
+     Number1:<input type="number" name="num1"><br><br>
+      Number2:<input type="number" name="num2"><br><br>
+      <input type="button" onclick="sum()" value="sum">
+      <input type="button" onclick="sub()" value="sub">
+      <input type="button" onclick="multiply()" value="multiply">
+      <input type="button" onclick="divide()" value="divide"><br><br>
+      <font color="red"> Result:
+         <input type="text" name="result">
+    </form>
+</body>
+</html>
